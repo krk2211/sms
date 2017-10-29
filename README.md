@@ -1,6 +1,5 @@
-# SMS
+# SMS (Student Management System - NITC)
 
-## Student Management System - NITC
 
 ## Follow the setup instructions below.
 1.  Clone the Repository
@@ -57,5 +56,3 @@ CREATE TABLE `loginAttempts` (
 - [ ] Mess Module
 
 - [ ] Attendance Module
-
-

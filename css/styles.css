@@ -1,0 +1,93 @@
+body
+{
+    background-color:rgb(244, 244, 244);
+}
+
+a
+{
+    color: rgb(178, 160, 102);
+}
+
+a:link {
+    color: rgb(178, 160, 102);
+}
+
+/* visited link */
+a:visited {
+    color: rgb(178, 160, 102);
+}
+
+/* mouse over link */
+a:hover {
+    color: red;
+}
+
+/* selected link */
+a:active {
+    color: rgb(178, 160, 102);
+}
+
+h1
+{
+    color:blue;
+    font-size: "1200%";
+    font-family: "Roboto", sans-serif
+}
+.btn-basic
+{
+    color: black;
+}
+#img0
+{
+    height : 5%;
+    width : 100%;
+}
+
+#img1
+{
+    height : 250px;
+    width : 70%;
+}
+
+#img2
+{
+    margin-left: 30%
+    height : 250px;
+    width : 40%;
+}
+
+#home
+{
+    color: rgb(178, 160, 102); font-size: 200%; text-align: center;
+    margin-left: 15%;
+    width : 85%;
+
+    /*height: 700px;*/
+    height: auto;
+    position: relative;
+    background-color: white;
+    font-family: "Roboto", sans-serif
+}
+
+#Heading
+{
+    link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"
+    color: rgb(153, 135, 77);
+    font-size: 300%;
+    font-family: "Montserrat", sans-serif;
+    margin-left: 50%;
+}
+
+#bar
+{
+    link rel="stylesheet" href= "https://fonts.googleapis.com/css?family=Roboto"
+    link=rgb(192, 178, 131); vlink=rgb(192, 178, 131); alink=rgb(192, 178, 131);
+    background-color: rgb(220, 208, 208);
+    width: 15%;
+    float: left;
+    position: fixed;
+    height: 608px;
+    font-size: 240%;
+    font-family: "Roboto", sans-serif
+    color : rgb(192, 178, 131);
+}

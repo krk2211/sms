@@ -117,6 +117,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+
+
+
+
 $get_stu="select * from student where studentID = ".$_POST['roll'].";";
 $run_stu=mysqli_query($con,$get_stu);
 while($row_stu=mysqli_fetch_array($run_stu))
@@ -134,10 +138,12 @@ echo "<div>
 <p>DEPARTMENT : $department</p>
 <p>BATCH      : $batch</p>
 
-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
 
 </div>";
 }
+
+
 
 
 
@@ -169,11 +175,77 @@ echo "<div>
 <p>COURSE NAME      : $coursename</p>
 <p>CREDITS          : $credits</p>
 
-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
+
+</div>";
+}
+}
+
+
+
+
+
+
+
+$get_stu="select * from student_taken_mess where studentID = ".$_POST['roll'].";";
+$run_stu=mysqli_query($con,$get_stu);
+while($row_stu=mysqli_fetch_array($run_stu))
+{
+$messname=$row_stu['messName'];
+
+$month=$row_stu['month'];
+$year=$row_stu['year'];
+
+$extra=$row_stu['extraAmount'];
+$total=$row_stu['totalAmount'];
+echo "<div>
+
+<p>MESS NAME       : $messname</p>
+<p>MONTH           : $month</h4>
+<p>YEAR            : $year</p>
+<p>EXTRA           : $extra</p>
+<p>TOTAL           : $total</p>
+
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
 
 </div>";
 }
 
+
+
+
+
+
+$get_stu="select * from student_has_course where studentID = ".$_POST['roll'].";";
+$run_stu=mysqli_query($con,$get_stu);
+while($row_stu=mysqli_fetch_array($run_stu))
+{
+$course=$row_stu['courseID'];
+$leaves = $row_stu['leavesTaken'];
+
+
+$get_stu2="select * from course where courseID = ".$course.";";
+$run_stu2=mysqli_query($con,$get_stu2);
+
+
+while($row_stu=mysqli_fetch_array($run_stu2))
+{
+$courseid=$row_stu['courseID'];
+
+$coursename=$row_stu['courseName'];
+$possible=$row_stu['possibleLeaves'];
+$left = $possible - $leaves;
+
+echo "<div>
+
+<p>Course ID          : $course</p>
+<p>COURSE NAME        : $coursename</p>
+<p>LEAVES REMAINING   : $left</p>
+
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
+
+</div>";
+}
 }
 
 

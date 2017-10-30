@@ -5,9 +5,11 @@
 <title>SMS - NITC</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="css/w3.css">
 <link rel="stylesheet" href="css/lat.css">
 <link rel="stylesheet" href="css/font.css">
+<link rel="stylesheet" href="assets/css/main.css" />
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
 body, html {
@@ -107,6 +109,53 @@ body, html {
     </div>
   </div>
   
+</div>
+
+<!-- Items -->
+<div id="wrapper">
+          <section class="main items">
+            <article class="item">
+              <header>
+                <a href="php/teacher.php"><img src="img/nitc1.jpg" class="w3-round w3-image w3-hover-opacity-off" alt="" /></a>
+                <h3>Teacher Portal</h3>
+              </header>
+              <p>This portal helps teachers update grades of a student.</p>
+              <ul class="actions">
+                <li><a href="php/teacher.php" class="button">More</a></li>
+              </ul>
+            </article>
+            <article class="item">
+              <header>
+                <a href="php/student.php"><img src="img/nitc4.jpg" alt="" /></a>
+                <h3>Student Portal</h3>
+              </header>
+              <p>This is the portal for students to view their mess dues, grades in all courses and attendance shortage.</p>
+              <ul class="actions">
+                <li><a href="php/student.php" class="button">More</a></li>
+              </ul>
+            </article>
+            <article class="item">
+              <header>
+                <a href="php/mess.php"><img src="img/nitc2.jpg" alt="" /></a>
+                <h3>Mess Fee</h3>
+              </header>
+              <p>This is the portal to update the mess dues.</p>
+              <ul class="actions">
+                <li><a href="php/mess.php" class="button">More</a></li>
+              </ul>
+            </article>
+            <article class="item">
+              <header>
+                <a href="attendance.php"><img src="img/nitc3.jpg" alt="" /></a>
+                <h3>Attendance</h3>
+              </header>
+              <p>This portal helps teachers enter attendance details of a student.</p>
+              <ul class="actions">
+                <li><a href="php/attendance.php" class="button">More</a></li>
+              </ul>
+            </article>
+          </section>
+
 </div>
 
 
@@ -243,7 +292,10 @@ function toggleFunction() {
 }
 </script>
 <script src="scripts/google.js"></script>
-
+<script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/skel.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <script src="assets/js/main.js"></script>
 
 </body>
 </html>

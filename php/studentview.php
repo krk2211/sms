@@ -138,6 +138,48 @@ X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
 
 </div>";
 }
+
+
+
+
+
+$get_stu="select * from student_has_course where studentID = ".$_POST['roll'].";";
+$run_stu=mysqli_query($con,$get_stu);
+while($row_stu=mysqli_fetch_array($run_stu))
+{
+$course=$row_stu['courseID'];
+$grades = $row_stu['grade'];
+
+
+$get_stu2="select * from course where courseID = ".$course.";";
+$run_stu2=mysqli_query($con,$get_stu2);
+
+
+while($row_stu=mysqli_fetch_array($run_stu2))
+{
+$courseid=$row_stu['courseID'];
+
+$coursename=$row_stu['courseName'];
+$credits=$row_stu['credits'];
+
+echo "<div>
+
+<p>Course ID        : $course</p>
+<p>GRADE            : $grades</h4>
+<p>COURSE NAME      : $coursename</p>
+<p>CREDITS          : $credits</p>
+
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+
+</div>";
+}
+
+}
+
+
+
+
+
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
 } else {

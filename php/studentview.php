@@ -17,8 +17,8 @@ body, html {
     line-height: 1.8;
 }
 #roll1{
-text-align: center;
-width: 100%;
+text-align: right;
+width: 300px;
 
 
 }
@@ -100,30 +100,60 @@ width: 100%;
     <!-- Wrapper -->
       <div id="wrapper">
 
-        <!-- Banner -->
-          <section id="intro" class="main">
-            <span class="icon fa-diamond major"></span>
-            <h2>STUDENT PORTAL</h2>
-            <p>This is a portal for all the students to view their transcripts, mess dues and attendance status</p>
- 			<form action="studentview.php"  method = "post"; >
- 				<p>Enter Roll Number</p><input type="text" name="roll" id = "roll1" >
- 				<br>
+       
+          
 
- 				<input type="submit" value="View Data" class="button big">
-            
-          </section>
+                  <?php
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "sms";
 
-                  </section>
+// Create connection
+$con = mysqli_connect($servername, $username, $password, $dbname);
 
-        <!-- Main -->
-        <!--
-          <section id="main" class="main">
-            <header>
-              <h2>Lorem ipsum dolor</h2>
-            </header>
-            <p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare. Etiam eget neque id metus gravida tristique ac quis erat. Aenean quis aliquet sem. Ut ut elementum sem. Suspendisse eleifend ut est non dapibus. Nulla porta, neque quis pretium sagittis, tortor lacus elementum metus, in imperdiet ante lorem vitae ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eget neque id metus gravida tristique ac quis erat. Aenean quis aliquet sem. Ut ut elementum sem. Suspendisse eleifend ut est non dapibus. Nulla porta, neque quis pretium sagittis, tortor lacus elementum metus, in imperdiet ante lorem vitae ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-          </section>
-        -->
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$get_stu="select * from student where studentID = ".$_POST['roll'].";";
+$run_stu=mysqli_query($con,$get_stu);
+while($row_stu=mysqli_fetch_array($run_stu))
+{
+$name=$row_stu['studentName'];
+
+$email=$row_stu['email'];
+$department=$row_stu['department'];
+
+$batch=$row_stu['batch'];
+echo "<div>
+
+<p>NAME       : $name</p>
+<p>EMAIL      : $email</h4>
+<p>DEPARTMENT : $department</p>
+<p>BATCH      : $batch</p>
+
+X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
+
+</div>";
+}
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+
+
+
+?>
+
+
+      
+
+
 
         <!-- Footer -->
           <footer id="footer">

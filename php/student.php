@@ -111,9 +111,8 @@ width: 100%;
 
  				<input type="submit" value="View Data" class="button big">
             
+			</form>
           </section>
-
-                  </section>
 
         <!-- Main -->
         <!--

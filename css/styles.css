@@ -3,6 +3,10 @@ body
     background-color:rgb(244, 244, 244);
 }
 
+#tab1{
+    text-align: right;
+}
+
 a
 {
     color: rgb(178, 160, 102);

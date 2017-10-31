@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/w3.css">
+
 <link rel="stylesheet" href="../css/lat.css">
 <link rel="stylesheet" href="../css/font.css">
 <link rel="stylesheet" href="../assets/css/main.css" />
@@ -17,8 +18,8 @@ body, html {
     line-height: 1.8;
 }
 #roll1{
-text-align: center;
-width: 100%;
+text-align: right;
+width: 300px;
 
 
 }
@@ -100,29 +101,213 @@ width: 100%;
     <!-- Wrapper -->
       <div id="wrapper">
 
-        <!-- Banner -->
-          <section id="intro" class="main">
-            <span class="icon fa-diamond major"></span>
-            <h2>STUDENT PORTAL</h2>
-            <p>This is a portal for all the students to view their transcripts, mess dues and attendance status</p>
- 			<form action="studentview.php"  method = "post"; >
- 				<p>Enter Roll Number</p><input type="text" name="roll" id = "roll1" >
- 				<br>
+      <section id="intro" class="main"> 
+          
 
- 				<input type="submit" value="View Data" class="button big">
-            
-			</form>
-          </section>
+                  <?php
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "sms";
 
-        <!-- Main -->
-        <!--
-          <section id="main" class="main">
-            <header>
-              <h2>Lorem ipsum dolor</h2>
-            </header>
-            <p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare. Etiam eget neque id metus gravida tristique ac quis erat. Aenean quis aliquet sem. Ut ut elementum sem. Suspendisse eleifend ut est non dapibus. Nulla porta, neque quis pretium sagittis, tortor lacus elementum metus, in imperdiet ante lorem vitae ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eget neque id metus gravida tristique ac quis erat. Aenean quis aliquet sem. Ut ut elementum sem. Suspendisse eleifend ut est non dapibus. Nulla porta, neque quis pretium sagittis, tortor lacus elementum metus, in imperdiet ante lorem vitae ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-          </section>
-        -->
+// Create connection
+$con = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+
+
+
+$get_stu="select * from student where studentID = ".$_POST['roll'].";";
+$run_stu=mysqli_query($con,$get_stu);
+
+echo '<table>
+    <tr>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>DEPARTMENT</th>
+        <th>BATCH</th>
+    </tr>';
+
+while($row_stu=mysqli_fetch_array($run_stu))
+{
+$name=$row_stu['studentName'];
+
+$email=$row_stu['email'];
+$department=$row_stu['department'];
+
+$batch=$row_stu['batch'];
+echo "
+<tr>
+  <td>NAME       : $name</td>
+  <td>EMAIL      : $email</td>
+  <td>DEPARTMENT : $department</td>
+  <td>BATCH      : $batch</td>
+
+</tr>";
+}
+
+
+echo "</table>";
+
+
+
+
+$get_stu="select * from student_has_course where studentID = ".$_POST['roll'].";";
+$run_stu=mysqli_query($con,$get_stu);
+
+echo '<table>
+    <tr>
+        <th>COURSE ID</th>
+        <th>COURSE NAME</th>
+        <th>GRADE</th>
+        <th>CREDITS</th>
+    </tr>';
+
+while($row_stu=mysqli_fetch_array($run_stu))
+{
+$course=$row_stu['courseID'];
+$grades = $row_stu['grade'];
+
+
+$get_stu2="select * from course where courseID = ".$course.";";
+$run_stu2=mysqli_query($con,$get_stu2);
+
+
+
+
+while($row_stu=mysqli_fetch_array($run_stu2))
+{
+$courseid=$row_stu['courseID'];
+
+$coursename=$row_stu['courseName'];
+$credits=$row_stu['credits'];
+
+echo "
+
+<tr>
+
+<td>$course</td>
+
+<td>$coursename</td>
+<td>$grades</td>
+<td>$credits</td>
+</tr>
+
+";
+}
+}
+
+echo "</table>";
+
+
+
+
+
+$get_stu="select * from student_taken_mess where studentID = ".$_POST['roll'].";";
+$run_stu=mysqli_query($con,$get_stu);
+
+echo '<table>
+    <tr>
+        <th>MESS NAME</th>
+        <th>MONTH</th>
+        <th>YEAR</th>
+        <th>EXTRA</th>
+        <th>TOTAL</th>
+    </tr>';
+
+while($row_stu=mysqli_fetch_array($run_stu))
+{
+$messname=$row_stu['messName'];
+
+$month=$row_stu['month'];
+$year=$row_stu['year'];
+
+$extra=$row_stu['extraAmount'];
+$total=$row_stu['totalAmount'];
+echo "<tr>
+
+<td>$messname</td>
+<td>$month</td>
+<td>$year</td>
+<td>$extra</td>
+<td>$total</td>
+
+</td>";
+}
+
+echo "</table>";
+
+
+
+
+
+
+$get_stu="select * from student_has_course where studentID = ".$_POST['roll'].";";
+$run_stu=mysqli_query($con,$get_stu);
+
+echo '<table text-align:center>
+    <tr>
+        <th>COURSE ID</th>
+        <th>COURSE NAME</th>
+        <th>LEAVES REMAINING</th>
+    </tr>';
+
+
+while($row_stu=mysqli_fetch_array($run_stu))
+{
+$course=$row_stu['courseID'];
+$leaves = $row_stu['leavesTaken'];
+
+
+$get_stu2="select * from course where courseID = ".$course.";";
+$run_stu2=mysqli_query($con,$get_stu2);
+
+
+while($row_stu=mysqli_fetch_array($run_stu2))
+{
+$courseid=$row_stu['courseID'];
+
+$coursename=$row_stu['courseName'];
+$possible=$row_stu['possibleLeaves'];
+$left = $possible - $leaves;
+
+echo "<tr>
+<td>$courseid</td>
+<td>$coursename</td>
+<td>$left</td>
+</td>";
+
+
+
+
+}
+}
+
+echo "</table>";
+
+
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+
+
+
+?>
+
+
+      
+</section>
+
 
         <!-- Footer -->
           <footer id="footer">

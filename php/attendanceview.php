@@ -205,8 +205,11 @@ width: 300px;
 		$run_stu=mysqli_query($con,$get_stu);
 		if(mysqli_num_rows($run_stu)>0)
 		{
+			echo "<script>window.location.href='attendanceview.php?loggedin'</script>";
+			/*
 			header("Location: attendanceview.php?loggedin");
 			die();
+			*/
 		}
 		else
 		{

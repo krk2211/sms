@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="css/w3.css">
+<link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/lat.css">
 <link rel="stylesheet" href="css/font.css">
 <link rel="stylesheet" href="assets/css/main.css" />
@@ -88,7 +89,7 @@ body, html {
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
   <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">STUDENT <span class="w3-hide-small">MANAGEMENT</span> SYSTEM - NITC</span>
+    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity" id = "headnitc">STUDENT <span class="w3-hide-small">MANAGEMENT</span> SYSTEM - NITC</span>
   </div>
 </div>
 

@@ -1,5 +1,7 @@
 <!-- <?php require "../login/loginheader.php"; ?> -->
 
+
+
 <!DOCTYPE html>
 <html>
 <title>SMS - NITC</title>
@@ -146,11 +148,27 @@ width: 300px;
 		$run_stu=mysqli_query($con,$get_stu);
 		if($run_stu)
 		{
-			echo "Success";
+			echo '
+			<div class="w3-container">
+				<div class="w3-panel w3-card w3-green w3-display-container">
+					<span onclick="this.parentElement.style.display='."'none'".'"
+					class="w3-button w3-green w3-large w3-display-topright">&times;</span>
+					<h3 style="color:white">Success!</h3>
+					<p>ATTENDANCE RECORD ADDED!</p>
+					</div>
+			</div>';
 		}
 		else
 		{
-			echo "Wrong teacherID";
+			echo '
+			<div class="w3-container">
+				<div class="w3-panel w3-card w3-red w3-display-container">
+					<span onclick="this.parentElement.style.display='."'none'".'"
+					class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+					<h3 style="color:white">Insert failed</h3>
+					<p>Probable error: TeacherID not matching up with courseID</p>
+					</div>
+			</div>';
 		}
 		echo '		
 		<section id="intro" class="main">
@@ -315,4 +333,3 @@ function toggleFunction() {
 
 </body>
 </html>
-

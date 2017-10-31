@@ -201,7 +201,7 @@ width: 300px;
 	{
 		$teacherUser=$_POST['teacherUser'];
 		$teacherPass=$_POST['teacherPass'];
-		$get_stu="select * from teacher where username = '$teacherPass' AND password = '$teacherPass'";
+		$get_stu="select * from teacher where username = '$teacherUser' AND password = '$teacherPass'";
 		$run_stu=mysqli_query($con,$get_stu);
 		if(mysqli_num_rows($run_stu)>0)
 		{

@@ -138,8 +138,9 @@ width: 300px;
 	}
 	else if(isset( $_GET['insert'] ))
 	{
-		$grade=$_POST['grade'];
-		$get_stu="INSERT INTO student_has_course VALUES ($_POST[studentID], $_POST[teacherID], $_POST[courseID], $_POST[leavesTaken], 'NULL')";
+		$leaves=$_POST['leavesTaken'];
+		//$get_stu="INSERT INTO student_has_course VALUES ($_POST[studentID], $_POST[teacherID], $_POST[courseID], $_POST[leavesTaken], 'NULL')";
+		$get_stu="UPDATE student_has_course SET leavesTaken = '$_POST[leavesTaken]' where studentID = $_POST[studentID] and teacherID=$_POST[teacherID] and courseID = $_POST[courseID]";
 		$run_stu=mysqli_query($con,$get_stu);
 		if($run_stu)
 		{

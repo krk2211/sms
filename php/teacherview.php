@@ -141,7 +141,7 @@ width: 300px;
 		$grade=$_POST['grade'];
 		//$get_stu="INSERT INTO student_has_course VALUES ($_POST[studentID], $_POST[teacherID], $_POST[courseID], $_POST[leavesTaken], 'NULL')";
 		$get_stu="UPDATE student_has_course SET grade = '$_POST[grade]' where studentID = $_POST[studentID] and teacherID=$_POST[teacherID] and courseID = $_POST[courseID]";
-		echo $get_stu;
+		
 		$run_stu=mysqli_query($con,$get_stu);
 		if($run_stu)
 		{

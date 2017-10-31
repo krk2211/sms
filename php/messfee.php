@@ -101,7 +101,7 @@ width: 100%;
                     <?php
   $servername = "localhost";
   $username = "root";
-  $password = "";
+  $password = "root";
   $dbname = "sms";
 
   // Create connection

@@ -175,7 +175,7 @@ $grades = $row_stu['grade'];
 
 
 $get_stu2="select * from course where courseID = ".$course.";";
-$run_stu2=mysqli_query($con,$get_stu2);
+$run_stu2=mysqli_query($conn,$get_stu2);
 
 
 

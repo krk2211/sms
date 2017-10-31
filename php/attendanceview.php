@@ -94,15 +94,15 @@ width: 300px;
 <!-- Header -->
       <header id="header" class="alt">
         <div class="inner">
-          <h1>Student Portal</h1>
-          <p>A portal for all students of NITC</p>
+          <h1>Attendance Portal</h1>
+          <p>A portal to check attendance</p>
         </div>
       </header>
 
 	  <?php
 	$servername = "localhost";
-	$username = "devanks";
-	$password = "dekusa";
+	$username = "root";
+	$password = "root";
 	$dbname = "sms";
 
 	// Create connection
@@ -111,7 +111,7 @@ width: 300px;
 	// Check connection
 	if ($con->connect_error) 
 	{
-		die("Connection failed: " . $conn->connect_error);
+		die("Connection failed: " . $con->connect_error);
 	}
 
 	if(isset( $_GET['loggedin'] ))
@@ -198,14 +198,16 @@ width: 300px;
 	}
 
 	else
-	{
+	{	
 		$teacherUser=$_POST['teacherUser'];
 		$teacherPass=$_POST['teacherPass'];
-		$get_stu="select * from teacher where username = '$teacherPass' AND password = '$teacherPass'";
+		$get_stu="select * from teacher where username = '$teacherUser' AND password = '$teacherPass'";
 		$run_stu=mysqli_query($con,$get_stu);
 		if(mysqli_num_rows($run_stu)>0)
-		{
-			header("Location: attendanceview.php?loggedin");
+		{	
+			//header("Location: attendanceview.php?loggedin");
+			header("Location: http://www.lifehacker.com");
+			echo "string";
 			die();
 		}
 		else
@@ -213,6 +215,7 @@ width: 300px;
 			header("Location: attendance.php?failedlogin");
 			die();
 		}
+
 	}
 	/*
 	while($row_stu=mysqli_fetch_array($run_stu))

@@ -111,7 +111,7 @@ $password = "root";
 $dbname = "sms";
 
 // Create connection
-$con = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
@@ -123,7 +123,7 @@ if ($conn->connect_error) {
 
 
 $get_stu="select * from student where studentID = ".$_POST['roll'].";";
-$run_stu=mysqli_query($con,$get_stu);
+$run_stu=mysqli_query($conn,$get_stu);
 
 echo '<table>
     <tr>
@@ -143,10 +143,10 @@ $department=$row_stu['department'];
 $batch=$row_stu['batch'];
 echo "
 <tr>
-  <td>NAME       : $name</td>
-  <td>EMAIL      : $email</td>
-  <td>DEPARTMENT : $department</td>
-  <td>BATCH      : $batch</td>
+  <td>$name</td>
+  <td>$email</td>
+  <td>$department</td>
+  <td>$batch</td>
 
 </tr>";
 }
@@ -158,7 +158,7 @@ echo "</table>";
 
 
 $get_stu="select * from student_has_course where studentID = ".$_POST['roll'].";";
-$run_stu=mysqli_query($con,$get_stu);
+$run_stu=mysqli_query($conn,$get_stu);
 
 echo '<table>
     <tr>
@@ -209,7 +209,7 @@ echo "</table>";
 
 
 $get_stu="select * from student_taken_mess where studentID = ".$_POST['roll'].";";
-$run_stu=mysqli_query($con,$get_stu);
+$run_stu=mysqli_query($conn,$get_stu);
 
 echo '<table>
     <tr>
@@ -248,7 +248,7 @@ echo "</table>";
 
 
 $get_stu="select * from student_has_course where studentID = ".$_POST['roll'].";";
-$run_stu=mysqli_query($con,$get_stu);
+$run_stu=mysqli_query($conn,$get_stu);
 
 echo '<table text-align:center>
     <tr>
@@ -265,7 +265,7 @@ $leaves = $row_stu['leavesTaken'];
 
 
 $get_stu2="select * from course where courseID = ".$course.";";
-$run_stu2=mysqli_query($con,$get_stu2);
+$run_stu2=mysqli_query($conn,$get_stu2);
 
 
 while($row_stu=mysqli_fetch_array($run_stu2))
@@ -292,11 +292,7 @@ echo "</table>";
 
 
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
+
 
 $conn->close();
 

@@ -124,7 +124,13 @@ if ($conn->connect_error) {
 $get_stu="select * from student where studentID = ".$_POST['roll'].";";
 $run_stu=mysqli_query($con,$get_stu);
 
-
+echo '<table>
+    <tr>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>DEPARTMENT</th>
+        <th>BATCH</th>
+    </tr>';
 
 while($row_stu=mysqli_fetch_array($run_stu))
 {
@@ -134,26 +140,33 @@ $email=$row_stu['email'];
 $department=$row_stu['department'];
 
 $batch=$row_stu['batch'];
-echo "<div>
+echo "
+<tr>
+  <td>NAME       : $name</td>
+  <td>EMAIL      : $email</td>
+  <td>DEPARTMENT : $department</td>
+  <td>BATCH      : $batch</td>
 
-<p>NAME       : $name</p>
-<p>EMAIL      : $email</h4>
-<p>DEPARTMENT : $department</p>
-<p>BATCH      : $batch</p>
-
-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
-
-</div>";
+</tr>";
 }
 
 
-
+echo "</table>";
 
 
 
 
 $get_stu="select * from student_has_course where studentID = ".$_POST['roll'].";";
 $run_stu=mysqli_query($con,$get_stu);
+
+echo '<table>
+    <tr>
+        <th>COURSE ID</th>
+        <th>COURSE NAME</th>
+        <th>GRADE</th>
+        <th>CREDITS</th>
+    </tr>';
+
 while($row_stu=mysqli_fetch_array($run_stu))
 {
 $course=$row_stu['courseID'];
@@ -164,6 +177,8 @@ $get_stu2="select * from course where courseID = ".$course.";";
 $run_stu2=mysqli_query($con,$get_stu2);
 
 
+
+
 while($row_stu=mysqli_fetch_array($run_stu2))
 {
 $courseid=$row_stu['courseID'];
@@ -171,20 +186,22 @@ $courseid=$row_stu['courseID'];
 $coursename=$row_stu['courseName'];
 $credits=$row_stu['credits'];
 
-echo "<div>
+echo "
 
-<p>Course ID        : $course</p>
-<p>GRADE            : $grades</h4>
-<p>COURSE NAME      : $coursename</p>
-<p>CREDITS          : $credits</p>
+<tr>
 
-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
+<td>$course</td>
 
-</div>";
+<td>$coursename</td>
+<td>$grades</td>
+<td>$credits</td>
+</tr>
+
+";
 }
 }
 
-
+echo "</table>";
 
 
 
@@ -192,6 +209,16 @@ X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
 
 $get_stu="select * from student_taken_mess where studentID = ".$_POST['roll'].";";
 $run_stu=mysqli_query($con,$get_stu);
+
+echo '<table>
+    <tr>
+        <th>MESS NAME</th>
+        <th>MONTH</th>
+        <th>YEAR</th>
+        <th>EXTRA</th>
+        <th>TOTAL</th>
+    </tr>';
+
 while($row_stu=mysqli_fetch_array($run_stu))
 {
 $messname=$row_stu['messName'];
@@ -201,18 +228,18 @@ $year=$row_stu['year'];
 
 $extra=$row_stu['extraAmount'];
 $total=$row_stu['totalAmount'];
-echo "<div>
+echo "<tr>
 
-<p>MESS NAME       : $messname</p>
-<p>MONTH           : $month</h4>
-<p>YEAR            : $year</p>
-<p>EXTRA           : $extra</p>
-<p>TOTAL           : $total</p>
+<td>$messname</td>
+<td>$month</td>
+<td>$year</td>
+<td>$extra</td>
+<td>$total</td>
 
-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
-
-</div>";
+</td>";
 }
+
+echo "</table>";
 
 
 
@@ -221,6 +248,15 @@ X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
 
 $get_stu="select * from student_has_course where studentID = ".$_POST['roll'].";";
 $run_stu=mysqli_query($con,$get_stu);
+
+echo '<table text-align:center>
+    <tr>
+        <th>COURSE ID</th>
+        <th>COURSE NAME</th>
+        <th>LEAVES REMAINING</th>
+    </tr>';
+
+
 while($row_stu=mysqli_fetch_array($run_stu))
 {
 $course=$row_stu['courseID'];
@@ -238,20 +274,19 @@ $courseid=$row_stu['courseID'];
 $coursename=$row_stu['courseName'];
 $possible=$row_stu['possibleLeaves'];
 $left = $possible - $leaves;
+echo "<tr>
+<td>$courseid</td>
+<td>$coursename</td>
+<td>$left</td>
+</td>";
 
-echo "<div>
 
-<p>Course ID          : $course</p>
-<p>COURSE NAME        : $coursename</p>
-<p>LEAVES REMAINING   : $left</p>
 
-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
 
-</div>";
 }
 }
 
-
+echo "</table>";
 
 
 

@@ -105,7 +105,7 @@ width: 100%;
             <span class="icon fa-diamond major"></span>
             <h2>STUDENT PORTAL</h2>
             <p>This is a portal for all the students to view their transcripts, mess dues and attendance status</p>
- 			<form action="studentview2.php"  method = "post"; >
+ 			<form action="studentview.php"  method = "post"; >
  				<p>Enter Roll Number</p><input type="text" name="roll" id = "roll1" >
  				<br>
 

@@ -1,6 +1,8 @@
+
+
 <!DOCTYPE html>
 <html>
-<title>Attendance</title>
+<title>SMS - NITC</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/w3.css">
@@ -90,15 +92,15 @@ width: 300px;
 <!-- Header -->
       <header id="header" class="alt">
         <div class="inner">
-          <h1>Attendance Portal</h1>
-          <p>A portal to check attendance</p>
+          <h1>Student Portal</h1>
+          <p>A portal for all students of NITC</p>
         </div>
       </header>
 
 	  <?php
 	$servername = "localhost";
-	$username = "root";
-	$password = "root";
+	$username = "devanks";
+	$password = "dekusa";
 	$dbname = "sms";
 
 	// Create connection
@@ -107,7 +109,7 @@ width: 300px;
 	// Check connection
 	if ($con->connect_error) 
 	{
-		die("Connection failed: " . $con->connect_error);
+		die("Connection failed: " . $conn->connect_error);
 	}
 
 	if(isset( $_GET['loggedin'] ))
@@ -123,24 +125,33 @@ width: 300px;
 		
 			</p>
  			<form action="attendanceview.php?insert"  method = "post">
- 				<p>Enter studentID&nbsp&nbsp<input type="number" name="studentID" id = "studentID"></p>
- 				<p></p>
-				<p>Enter teacherID&nbsp&nbsp<input type="number" name="teacherID" id = "teacherID"></p>
- 				<p></p>
- 				<p>Enter leaves taken&nbsp&nbsp<input type="number" name="leavesTaken" id = "leavesTaken"></p>
- 				<p></p>
-				<p>Enter CourseID&nbsp&nbsp<input type="number" name="courseID" id = "courseID"></p>
- 				<p></p>
-				
+ 				<p>Enter studentID</p><input type="number" name="studentID" id = "studentID">
+ 				<br>
+				<p>Enter teacherID</p><input type="number" name="teacherID" id = "teacherID">
+ 				<br>
+ 				<p>Enter leaves taken</p><input type="number" name="leavesTaken" id = "leavesTaken">
+ 				<br>
+				<p>Enter CourseID</p><input type="number" name="courseID" id = "courseID">
+ 				<br>
+				<p>Enter Grade</p>
+				<select name="grade">
+					<option value="S">S</option>
+					<option value="A">A</option>
+					<option value="B">B</option>
+					<option value="C">C</option>
+					<option value="D">D</option>
+					<option value="E">E</option>
+					<option value="F">F</option>
+				</select>
+ 				<br>
  				<input type="submit" value="View Data" class="button big">
 			</form>
 		</section>';
 	}
 	else if(isset( $_GET['insert'] ))
 	{
-		$leaves=$_POST['leavesTaken'];
-		//$get_stu="INSERT INTO student_has_course VALUES ($_POST[studentID], $_POST[teacherID], $_POST[courseID], $_POST[leavesTaken], 'NULL')";
-		$get_stu="UPDATE student_has_course SET leavesTaken = '$_POST[leavesTaken]' where studentID = $_POST[studentID] and teacherID=$_POST[teacherID] and courseID = $_POST[courseID]";
+		$grade=$_POST['grade'];
+		$get_stu="INSERT INTO student_has_course VALUES ($_POST[studentID], $_POST[teacherID], $_POST[courseID], $_POST[leavesTaken], '$grade')";
 		$run_stu=mysqli_query($con,$get_stu);
 		if($run_stu)
 		{
@@ -178,47 +189,46 @@ width: 300px;
 		
 			</p>
  			<form action="attendanceview.php?insert"  method = "post">
- 				<p>Enter studentID&nbsp&nbsp<input type="number" name="studentID" id = "studentID"></p>
- 				<p></p>
-				<p>Enter teacherID&nbsp&nbsp<input type="number" name="teacherID" id = "teacherID"></p>
- 				<p></p>
- 				<p>Enter leaves taken&nbsp&nbsp<input type="number" name="leavesTaken" id = "leavesTaken"></p>
- 				<p></p>
-				<p>Enter CourseID&nbsp&nbsp<input type="number" name="courseID" id = "courseID"></p>
- 				<p></p>
-				
+ 				<p>Enter studentID</p><input type="number" name="studentID" id = "studentID">
+ 				<br>
+				<p>Enter teacherID</p><input type="number" name="teacherID" id = "teacherID">
+ 				<br>
+ 				<p>Enter leaves taken</p><input type="number" name="leavesTaken" id = "leavesTaken">
+ 				<br>
+				<p>Enter CourseID</p><input type="number" name="courseID" id = "courseID">
+ 				<br>
+				<p>Enter Grade</p>
+				<select name="grade">
+					<option value="S">S</option>
+					<option value="A">A</option>
+					<option value="B">B</option>
+					<option value="C">C</option>
+					<option value="D">D</option>
+					<option value="E">E</option>
+					<option value="F">F</option>
+				</select>
+ 				<br>
  				<input type="submit" value="View Data" class="button big">
 			</form>
 		</section>';
 	}
 
 	else
-	{	
+	{
 		$teacherUser=$_POST['teacherUser'];
 		$teacherPass=$_POST['teacherPass'];
-		$get_stu="select * from teacher where username = '$teacherUser' AND password = '$teacherPass'";
+		$get_stu="select * from teacher where username = '$teacherPass' AND password = '$teacherPass'";
 		$run_stu=mysqli_query($con,$get_stu);
 		if(mysqli_num_rows($run_stu)>0)
 		{
-			echo "<script>window.location.href='attendanceview.php?loggedin'</script>";
-			/*
 			header("Location: attendanceview.php?loggedin");
-		{	
-			//header("Location: attendanceview.php?loggedin");
-			header("Location: http://www.lifehacker.com");
-			echo "string";
 			die();
-			*/
 		}
 		else
 		{
-			echo "<script>window.location.href='attendance.php?failedlogin'</script>";
-			/*
 			header("Location: attendance.php?failedlogin");
 			die();
-			*/
 		}
-
 	}
 	/*
 	while($row_stu=mysqli_fetch_array($run_stu))

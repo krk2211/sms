@@ -15,17 +15,21 @@
 
 5. Use `<?php require "login/loginheader.php"; ?>` To require session usage.
 
+6. Change the database configurations in line 99 in the files ending with view in the php folder.
+
 
 ## TO-Dos
 
 - [X] Setup Database
 
-- [ ] Teacher Module
+- [X] Teacher Module
 
-- [ ] Student Module
+- [X] Student Module
 
 - [ ] Admin Module
 
-- [ ] Mess Module
+- [X] Mess Module
 
-- [ ] Attendance Module
+- [X] Attendance Module
+
+- [ ](\Optional) Change the structure of Mess to that of Teacher and Attendance

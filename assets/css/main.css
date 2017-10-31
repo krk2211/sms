@@ -1396,6 +1396,7 @@
 				-ms-transition: opacity 2s ease;
 				transition: opacity 2s ease;
 				opacity: 1;
+				z-index:inherit;
 			}
 
 		body.is-loading #header.alt:before {
@@ -1554,4 +1555,8 @@
 					margin-bottom: 2em;
 				}
 
+		}
+
+		#myNavbar {
+			color:white;
 		}

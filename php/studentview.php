@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <title>Student Details</title>
@@ -20,8 +18,6 @@ body, html {
 #roll1{
 text-align: right;
 width: 300px;
-
-
 }
 /* Create a Parallax Effect */
 .bgimg-1, .bgimg-2, .bgimg-3 {
@@ -76,8 +72,6 @@ width: 300px;
       LOGOUT
     </a>
   </div>
-
-  <!-- Navbar on small screens -->
  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
     <a href="../home.php" class="w3-bar-item w3-button" onclick="toggleFunction()">HOME</a>
     <a href="teacher.php" class="w3-bar-item w3-button" onclick="toggleFunction()">TEACHER</a>
@@ -90,7 +84,6 @@ width: 300px;
   </div>
 </div>
 
-<!-- Header -->
       <header id="header" class="alt">
         <div class="inner">
           <h1>Student Portal</h1>

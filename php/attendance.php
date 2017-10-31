@@ -1,5 +1,7 @@
 <!-- <?php require "../login/loginheader.php"; ?> -->
 
+
+
 <!DOCTYPE html>
 <html>
 <title>SMS - NITC</title>
@@ -8,6 +10,7 @@
 <link rel="stylesheet" href="../css/w3.css">
 <link rel="stylesheet" href="../css/lat.css">
 <link rel="stylesheet" href="../css/font.css">
+<link rel="stylesheet" href="../assets/css/main.css" />
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
 body, html {
@@ -83,7 +86,58 @@ body, html {
   </div>
 </div>
 
+<!-- Header -->
+      <header id="header" class="alt">
+        <div class="inner" style="z-index:inherit">
+          <h1>Attendance Portal</h1>
+          <p>Check attendance</p>
+        </div>
+      </header>
 
+    <!-- Wrapper -->
+      <div id="wrapper">
+
+        <!-- Banner -->
+		<section id="intro" class="main">
+            <span class="icon fa-diamond major"></span>
+            <h2>
+				ATTENDANCE PORTAL
+			</h2>
+            <p>
+				This is a portal for teachers to add their students' attendance status
+		
+			</p>
+ 			<form action="attendanceview.php"  method = "post"; >
+ 				<p>Enter Username</p><input type="text" name="teacherUser" id = "teacherUser">
+ 				<br>
+ 				<p>Enter Password</p><input type="password" name="teacherPass" id = "teacherPass">
+ 				<br>
+ 				<input type="submit" value="View Data" class="button big">
+			</form>
+		</section>
+		
+        <!-- Footer -->
+          <footer id="footer">
+            <ul class="icons">
+              <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+              <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+              <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+              <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+              <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+            </ul>
+            
+          </footer>
+
+      </div>
+
+    <!-- Scripts -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/skel.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <script src="assets/js/main.js"></script>
+
+
+ 
  
 <!-- Add Google Maps -->
 <script>

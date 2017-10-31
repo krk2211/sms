@@ -97,175 +97,147 @@ width: 300px;
         </div>
       </header>
 
-    <!-- Wrapper -->
-      <div id="wrapper">
+	  <?php
+	$servername = "localhost";
+	$username = "devanks";
+	$password = "dekusa";
+	$dbname = "sms";
 
-       
-          
+	// Create connection
+	$con = mysqli_connect($servername, $username, $password, $dbname);
 
-                  <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "sms";
+	// Check connection
+	if ($con->connect_error) 
+	{
+		die("Connection failed: " . $conn->connect_error);
+	}
 
-// Create connection
-$con = mysqli_connect($servername, $username, $password, $dbname);
+	if(isset( $_GET['loggedin'] ))
+	{
+		echo '		<section id="intro" class="main">
+            <span class="icon fa-diamond major"></span>
+            <h2>
+				Add Attendance
+			</h2>
+            <p>
+			
+				Enter studentID, teacherID, leaves taken and courseID, grade
+		
+			</p>
+ 			<form action="attendanceview.php?insert"  method = "post">
+ 				<p>Enter studentID</p><input type="number" name="studentID" id = "studentID">
+ 				<br>
+				<p>Enter teacherID</p><input type="number" name="teacherID" id = "teacherID">
+ 				<br>
+ 				<p>Enter leaves taken</p><input type="number" name="leavesTaken" id = "leavesTaken">
+ 				<br>
+				<p>Enter CourseID</p><input type="number" name="courseID" id = "courseID">
+ 				<br>
+				<p>Enter Grade</p><input type="text" name="grade" id = "grade">
+ 				<br>
+ 				<input type="submit" value="View Data" class="button big">
+			</form>
+		</section>';
+	}
+	else if(isset( $_GET['insert'] ))
+	{
+		$grade=$_POST['grade'];
+		$get_stu="INSERT INTO student_has_course VALUES ($_POST[studentID], $_POST[teacherID], $_POST[courseID], $_POST[leavesTaken], '$grade')";
+		$run_stu=mysqli_query($con,$get_stu);
+		if($run_stu)
+		{
+			echo "Success";
+		}
+		else
+		{
+			echo "Wrong teacherID";
+		}
+		echo '		
+		<section id="intro" class="main">
+            <span class="icon fa-diamond major"></span>
+            <h2>
+				Add Attendance
+			</h2>
+            <p>
+			
+				Enter studentID, teacherID, leaves taken and courseID, grade
+		
+			</p>
+ 			<form action="attendanceview.php?insert"  method = "post">
+ 				<p>Enter studentID</p><input type="number" name="studentID" id = "studentID">
+ 				<br>
+				<p>Enter teacherID</p><input type="number" name="teacherID" id = "teacherID">
+ 				<br>
+ 				<p>Enter leaves taken</p><input type="number" name="leavesTaken" id = "leavesTaken">
+ 				<br>
+				<p>Enter CourseID</p><input type="number" name="courseID" id = "courseID">
+ 				<br>
+				<p>Enter Grade</p><input type="text" name="grade" id = "grade">
+ 				<br>
+ 				<input type="submit" value="View Data" class="button big">
+			</form>
+		</section>';
+	}
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-
-
-
-
-$get_stu="select * from student where studentID = ".$_POST['roll'].";";
-$run_stu=mysqli_query($con,$get_stu);
-while($row_stu=mysqli_fetch_array($run_stu))
-{
-$name=$row_stu['studentName'];
-
-$email=$row_stu['email'];
-$department=$row_stu['department'];
-
-$batch=$row_stu['batch'];
-echo "<div>
-
-<p>NAME       : $name</p>
-<p>EMAIL      : $email</h4>
-<p>DEPARTMENT : $department</p>
-<p>BATCH      : $batch</p>
-
-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
-
-</div>";
-}
-
-
-
-
-
-
-
-$get_stu="select * from student_has_course where studentID = ".$_POST['roll'].";";
-$run_stu=mysqli_query($con,$get_stu);
-while($row_stu=mysqli_fetch_array($run_stu))
-{
-$course=$row_stu['courseID'];
-$grades = $row_stu['grade'];
-
-
-$get_stu2="select * from course where courseID = ".$course.";";
-$run_stu2=mysqli_query($con,$get_stu2);
-
-
-while($row_stu=mysqli_fetch_array($run_stu2))
-{
-$courseid=$row_stu['courseID'];
-
-$coursename=$row_stu['courseName'];
-$credits=$row_stu['credits'];
-
-echo "<div>
-
-<p>Course ID        : $course</p>
-<p>GRADE            : $grades</h4>
-<p>COURSE NAME      : $coursename</p>
-<p>CREDITS          : $credits</p>
-
-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
-
-</div>";
-}
-}
-
-
-
-
-
-
-
-$get_stu="select * from student_taken_mess where studentID = ".$_POST['roll'].";";
-$run_stu=mysqli_query($con,$get_stu);
-while($row_stu=mysqli_fetch_array($run_stu))
-{
-$messname=$row_stu['messName'];
-
-$month=$row_stu['month'];
-$year=$row_stu['year'];
-
-$extra=$row_stu['extraAmount'];
-$total=$row_stu['totalAmount'];
-echo "<div>
-
-<p>MESS NAME       : $messname</p>
-<p>MONTH           : $month</h4>
-<p>YEAR            : $year</p>
-<p>EXTRA           : $extra</p>
-<p>TOTAL           : $total</p>
-
-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
-
-</div>";
-}
+	else
+	{
+		$teacherUser=$_POST['teacherUser'];
+		$teacherPass=$_POST['teacherPass'];
+		$get_stu="select * from teacher where username = 'teacherPass' AND password = 'teacherPass'";
+		$run_stu=mysqli_query($con,$get_stu);
+		if($run_stu)
+		{
+			header("Location: attendanceview.php?loggedin");
+			die();
+		}
+		else
+		{
+			header("Location: /attendance.php?failedlogin");
+			die();
+		}
+	}
+	/*
+	while($row_stu=mysqli_fetch_array($run_stu))
+	{
+	$course=$row_stu['courseID'];
+	$leaves = $row_stu['leavesTaken'];
 
 
+	$get_stu2="select * from course where courseID = ".$course.";";
+	$run_stu2=mysqli_query($con,$get_stu2);
 
 
+	while($row_stu=mysqli_fetch_array($run_stu2))
+	{
+	$courseid=$row_stu['courseID'];
 
+	$coursename=$row_stu['courseName'];
+	$possible=$row_stu['possibleLeaves'];
+	$left = $possible - $leaves;
 
-$get_stu="select * from student_has_course where studentID = ".$_POST['roll'].";";
-$run_stu=mysqli_query($con,$get_stu);
-while($row_stu=mysqli_fetch_array($run_stu))
-{
-$course=$row_stu['courseID'];
-$leaves = $row_stu['leavesTaken'];
+	echo "<div>
 
+	<p>Course ID          : $course</p>
+	<p>COURSE NAME        : $coursename</p>
+	<p>LEAVES REMAINING   : $left</p>
 
-$get_stu2="select * from course where courseID = ".$course.";";
-$run_stu2=mysqli_query($con,$get_stu2);
+	X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
 
+	</div>";
+	}
+	}
 
-while($row_stu=mysqli_fetch_array($run_stu2))
-{
-$courseid=$row_stu['courseID'];
+	*/
 
-$coursename=$row_stu['courseName'];
-$possible=$row_stu['possibleLeaves'];
-$left = $possible - $leaves;
-
-echo "<div>
-
-<p>Course ID          : $course</p>
-<p>COURSE NAME        : $coursename</p>
-<p>LEAVES REMAINING   : $left</p>
-
-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
-
-</div>";
-}
-}
-
-
-
-
-
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-$conn->close();
+	$con->close();
 
 
 
 ?>
 
-
-      
+	  
+    <!-- Wrapper -->
+      <div id="wrapper">
 
 
 

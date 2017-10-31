@@ -97,6 +97,23 @@ body, html {
     <!-- Wrapper -->
       <div id="wrapper">
 
+	  			<?php
+			
+			if(isset( $_GET['failedLogin'] ))
+			{
+				echo"failed";
+				echo '
+				<div class="w3-container">
+					<div class="w3-panel w3-card w3-red w3-display-container">
+						<span onclick="this.parentElement.style.display='."'none'".'"
+						class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+						<h3 style="color:white">Login Failed</h3>
+						<p>Please try again. If error persists, contact admin.</p>
+						</div>
+				</div>';
+			}
+			
+			?>
         <!-- Banner -->
 		<section id="intro" class="main">
             <span class="icon fa-diamond major"></span>
@@ -107,6 +124,7 @@ body, html {
 				This is a portal for teachers to add their students' attendance status
 		
 			</p>
+
  			<form action="attendanceview.php"  method = "post"; >
  				<p>Enter Username</p><input type="text" name="teacherUser" id = "teacherUser">
  				<br>

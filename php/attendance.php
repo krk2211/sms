@@ -1,5 +1,3 @@
-<!-- <?php require "../login/loginheader.php"; ?> -->
-
 
 
 <!DOCTYPE html>
@@ -90,7 +88,7 @@ body, html {
       <header id="header" class="alt">
         <div class="inner" style="z-index:inherit">
           <h1>Attendance Portal</h1>
-          <p>Check attendance</p>
+          <p>A portal to check attendance</p>
         </div>
       </header>
 

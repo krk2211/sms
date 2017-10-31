@@ -116,8 +116,8 @@ body, html {
           <section class="main items">
             <article class="item">
               <header>
-                <a href="php/teacher.php" style="z-index: inherit" ><img src="img/nitc1.jpg" class="w3-round w3-image w3-hover-opacity-off" alt="" /></a>
-                <h3 style="z-index: inherit" >Teacher Portal</h3>
+                <a href="php/teacher.php"><img src="img/nitc1.jpg" class="w3-round w3-image w3-hover-opacity-off" alt="" /></a>
+                <h3>Teacher Portal</h3>
               </header>
               <p>This portal helps teachers update grades of a student.</p>
               <ul class="actions">
@@ -126,8 +126,8 @@ body, html {
             </article>
             <article class="item">
               <header>
-                <a href="php/student.php" style="z-index: inherit" ><img src="img/nitc4.jpg" alt="" /></a>
-                <h3 style="z-index: inherit" >Student Portal</h3>
+                <a href="php/student.php"><img src="img/nitc4.jpg" alt="" /></a>
+                <h3>Student Portal</h3>
               </header>
               <p>This is the portal for students to view their mess dues, grades in all courses and attendance shortage.</p>
               <ul class="actions">
@@ -136,8 +136,8 @@ body, html {
             </article>
             <article class="item">
               <header>
-                <a href="php/mess.php" style="z-index: inherit" ><img src="img/nitc2.jpg" alt="" /></a>
-                <h3 style="z-index: inherit" >Mess Fee</h3>
+                <a href="php/mess.php"><img src="img/nitc2.jpg" alt="" /></a>
+                <h3>Mess Fee</h3>
               </header>
               <p>This is the portal to update the mess dues.</p>
               <ul class="actions">
@@ -146,8 +146,8 @@ body, html {
             </article>
             <article class="item">
               <header>
-                <a href="attendance.php" style="z-index: inherit" ><img src="img/nitc3.jpg" alt="" /></a>
-                <h3 style="z-index: inherit" >Attendance</h3>
+                <a href="attendance.php"><img src="img/nitc3.jpg" alt="" /></a>
+                <h3>Attendance</h3>
               </header>
               <p>This portal helps teachers enter attendance details of a student.</p>
               <ul class="actions">

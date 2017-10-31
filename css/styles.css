@@ -3,6 +3,10 @@ body
     background-color:rgb(244, 244, 244);
 }
 
+table{
+    text-align: center;
+}
+
 a
 {
     color: rgb(178, 160, 102);

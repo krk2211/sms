@@ -179,16 +179,15 @@ width: 300px;
 		
 			</p>
  			<form action="attendanceview.php?insert"  method = "post">
- 				<p>Enter studentID</p><input type="number" name="studentID" id = "studentID">
- 				<br>
-				<p>Enter teacherID</p><input type="number" name="teacherID" id = "teacherID">
- 				<br>
- 				<p>Enter leaves taken</p><input type="number" name="leavesTaken" id = "leavesTaken">
- 				<br>
-				<p>Enter CourseID</p><input type="number" name="courseID" id = "courseID">
- 				<br>
-				<p>Enter Grade</p><input type="text" name="grade" id = "grade">
- 				<br>
+ 				<p>Enter studentID&nbsp&nbsp<input type="number" name="studentID" id = "studentID"></p>
+ 				<p></p>
+				<p>Enter teacherID&nbsp&nbsp<input type="number" name="teacherID" id = "teacherID"></p>
+ 				<p></p>
+ 				<p>Enter leaves taken&nbsp&nbsp<input type="number" name="leavesTaken" id = "leavesTaken"></p>
+ 				<p></p>
+				<p>Enter CourseID&nbsp&nbsp<input type="number" name="courseID" id = "courseID"></p>
+ 				<p></p>
+				
  				<input type="submit" value="View Data" class="button big">
 			</form>
 		</section>';

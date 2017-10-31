@@ -96,8 +96,7 @@ width: 300px;
           <p>A portal for all students of NITC</p>
         </div>
       </header>
-
-	  <?php
+<?php
 	$servername = "localhost";
 	$username = "root";
 	$password = "root";
@@ -109,7 +108,7 @@ width: 300px;
 	// Check connection
 	if ($con->connect_error) 
 	{
-		die("Connection failed: " . $conn->connect_error);
+		die("Connection failed: " . $con->connect_error);
 	}
 
 	if(isset( $_GET['loggedin'] ))
@@ -125,33 +124,24 @@ width: 300px;
 		
 			</p>
  			<form action="attendanceview.php?insert"  method = "post">
- 				<p>Enter studentID</p><input type="number" name="studentID" id = "studentID">
- 				<br>
-				<p>Enter teacherID</p><input type="number" name="teacherID" id = "teacherID">
- 				<br>
- 				<p>Enter leaves taken</p><input type="number" name="leavesTaken" id = "leavesTaken">
- 				<br>
-				<p>Enter CourseID</p><input type="number" name="courseID" id = "courseID">
- 				<br>
-				<p>Enter Grade</p>
-				<select name="grade">
-					<option value="S">S</option>
-					<option value="A">A</option>
-					<option value="B">B</option>
-					<option value="C">C</option>
-					<option value="D">D</option>
-					<option value="E">E</option>
-					<option value="F">F</option>
-				</select>
- 				<br>
+ 				<p>Enter studentID&nbsp&nbsp<input type="number" name="studentID" id = "studentID"></p>
+ 				<p></p>
+				<p>Enter teacherID&nbsp&nbsp<input type="number" name="teacherID" id = "teacherID"></p>
+ 				<p></p>
+ 				<p>Enter leaves taken&nbsp&nbsp<input type="number" name="leavesTaken" id = "leavesTaken"></p>
+ 				<p></p>
+				<p>Enter CourseID&nbsp&nbsp<input type="number" name="courseID" id = "courseID"></p>
+ 				<p></p>
+				
  				<input type="submit" value="View Data" class="button big">
 			</form>
 		</section>';
 	}
 	else if(isset( $_GET['insert'] ))
 	{
-		$grade=$_POST['grade'];
-		$get_stu="INSERT INTO student_has_course VALUES ($_POST[studentID], $_POST[teacherID], $_POST[courseID], $_POST[leavesTaken], '$grade')";
+		$leaves=$_POST['leavesTaken'];
+		//$get_stu="INSERT INTO student_has_course VALUES ($_POST[studentID], $_POST[teacherID], $_POST[courseID], $_POST[leavesTaken], 'NULL')";
+		$get_stu="UPDATE student_has_course SET leavesTaken = '$_POST[leavesTaken]' where studentID = $_POST[studentID] and teacherID=$_POST[teacherID] and courseID = $_POST[courseID]";
 		$run_stu=mysqli_query($con,$get_stu);
 		if($run_stu)
 		{
@@ -189,32 +179,22 @@ width: 300px;
 		
 			</p>
  			<form action="attendanceview.php?insert"  method = "post">
- 				<p>Enter studentID</p><input type="number" name="studentID" id = "studentID">
- 				<br>
-				<p>Enter teacherID</p><input type="number" name="teacherID" id = "teacherID">
- 				<br>
- 				<p>Enter leaves taken</p><input type="number" name="leavesTaken" id = "leavesTaken">
- 				<br>
-				<p>Enter CourseID</p><input type="number" name="courseID" id = "courseID">
- 				<br>
-				<p>Enter Grade</p>
-				<select name="grade">
-					<option value="S">S</option>
-					<option value="A">A</option>
-					<option value="B">B</option>
-					<option value="C">C</option>
-					<option value="D">D</option>
-					<option value="E">E</option>
-					<option value="F">F</option>
-				</select>
- 				<br>
+ 				<p>Enter studentID&nbsp&nbsp<input type="number" name="studentID" id = "studentID"></p>
+ 				<p></p>
+				<p>Enter teacherID&nbsp&nbsp<input type="number" name="teacherID" id = "teacherID"></p>
+ 				<p></p>
+ 				<p>Enter leaves taken&nbsp&nbsp<input type="number" name="leavesTaken" id = "leavesTaken"></p>
+ 				<p></p>
+				<p>Enter CourseID&nbsp&nbsp<input type="number" name="courseID" id = "courseID"></p>
+ 				<p></p>
+				
  				<input type="submit" value="View Data" class="button big">
 			</form>
 		</section>';
 	}
 
 	else
-	{
+	{	
 		$teacherUser=$_POST['teacherUser'];
 		$teacherPass=$_POST['teacherPass'];
 		$get_stu="select * from teacher where username = '$teacherUser' AND password = '$teacherPass'";
@@ -223,9 +203,9 @@ width: 300px;
 		{
 			echo "<script>window.location.href='attendanceview.php?loggedin'</script>";
 			/*
-			header("Location: teacherview.php?loggedin");
+			header("Location: attendanceview.php?loggedin");
 		{	
-			//header("Location: teacherview.php?loggedin");
+			//header("Location: attendanceview.php?loggedin");
 			header("Location: http://www.lifehacker.com");
 			echo "string";
 			die();
@@ -239,6 +219,7 @@ width: 300px;
 			die();
 			*/
 		}
+
 	}
 	/*
 	while($row_stu=mysqli_fetch_array($run_stu))
@@ -278,7 +259,6 @@ width: 300px;
 
 
 ?>
-
 	  
     <!-- Wrapper -->
       <div id="wrapper">

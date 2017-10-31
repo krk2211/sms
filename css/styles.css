@@ -3,8 +3,8 @@ body
     background-color:rgb(244, 244, 244);
 }
 
-table{
-    text-align: center;
+#tab1{
+    text-align: right;
 }
 
 a

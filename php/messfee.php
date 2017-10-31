@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 <title>SMS - NITC</title>
@@ -15,7 +16,12 @@ body, html {
     color: #777;
     line-height: 1.8;
 }
+#roll1{
+text-align: center;
+width: 100%;
 
+
+}
 /* Create a Parallax Effect */
 .bgimg-1, .bgimg-2, .bgimg-3 {
     background-attachment: fixed;
@@ -83,69 +89,91 @@ body, html {
   </div>
 </div>
 
-<!-- WORK HERE -->
+<!-- Header -->
+      
 
-<!-- Wrapper -->
-  <div id="wrapper">
+    <!-- Wrapper -->
+      <div id="wrapper">
 
-    <!-- Banner -->
-      <section id="intro" class="main">
-        <span class="icon fa-diamond major"></span>
-        <h2>MESS</h2>
-        <p>This is a portal for all the students to enter their corresponding mess details</p>
-  <form action="messfee.php"  method = "post"; >
-    <p>Enter Roll No</p><input type="text" name="roll" id = "roll1" >
-    <br>
-    <p>Enter Mess Name</p><input type="text" name="messname" id = "messname1" >
-    <br>
-    <p>Enter Month</p><input type="text" name="month" id = "month1" >
-    <br>
-    <p>Enter Year</p><input type="text" name="year" id = "year1" >
-    <br>
-    <p>Enter Extra Amount</p><input type="text" name="extraamt" id = "extraamt11" >
-    <br>
+        <section id="intro" class="main">
 
 
+                    <?php
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "sms";
+
+  // Create connection
+  $con = mysqli_connect($servername, $username, $password, $dbname);
+
+  // Check connection
+  if ($con->connect_error) {
+      die("Connection failed: " . $con->connect_error);
+  }
 
 
-    <input type="submit" value="Enter Data" class="button big">
+$roll = $_POST["roll"];
+$messname = $_POST["messname"];
+$month = $_POST["month"];
+$year = $_POST["year"];
+$extraamt = $_POST["extraamt"];
 
-  </form>
-      </section>
 
-    <!-- Main -->
-    <!--
-      <section id="main" class="main">
-        <header>
-          <h2>Lorem ipsum dolor</h2>
-        </header>
-        <p>Fusce malesuada efficitur venenatis. Pellentesque tempor leo sed massa hendrerit hendrerit. In sed feugiat est, eu congue elit. Ut porta magna vel felis sodales vulputate. Donec faucibus dapibus lacus non ornare. Etiam eget neque id metus gravida tristique ac quis erat. Aenean quis aliquet sem. Ut ut elementum sem. Suspendisse eleifend ut est non dapibus. Nulla porta, neque quis pretium sagittis, tortor lacus elementum metus, in imperdiet ante lorem vitae ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eget neque id metus gravida tristique ac quis erat. Aenean quis aliquet sem. Ut ut elementum sem. Suspendisse eleifend ut est non dapibus. Nulla porta, neque quis pretium sagittis, tortor lacus elementum metus, in imperdiet ante lorem vitae ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-      </section>
-    -->
 
-    <!-- Footer -->
-      <footer id="footer">
-        <ul class="icons">
-          <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-          <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-          <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-          <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-          <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
-        </ul>
+$get_stu="select * from mess where messname = '".$messname."';";
+$run_stu=mysqli_query($con,$get_stu);
 
-      </footer>
 
-  </div>
+while($row_stu=mysqli_fetch_array($run_stu))
+{
+$daily=$row_stu['dailyCharges'];
+}
 
-<!-- Scripts -->
-  <script src="../assets/js/jquery.min.js"></script>
-  <script src="../assets/js/skel.min.js"></script>
-  <script src="../assets/js/util.js"></script>
-  <script src="../assets/js/main.js"></script>
+$due = 31* $daily;
+
+
+$sql="INSERT INTO student_taken_mess (studentID, messName, month, year, extraAmount, totalAmount) VALUES ($roll, '$messname', $month, '$year', $extraamt, $due )";
+
+if($con->query($sql) === TRUE) {
+  echo "Entered Successfully";
+}
+else
+echo "Error: " . $sql . "<br>" . $con->error;
 
 
 
 
+  $con->close();
+
+
+
+  ?>
+
+
+
+  </section>
+
+
+        <!-- Footer -->
+          <footer id="footer">
+            <ul class="icons">
+              <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+              <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+              <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+              <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+              <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+            </ul>
+
+          </footer>
+
+      </div>
+
+    <!-- Scripts -->
+      <script src="../assets/js/jquery.min.js"></script>
+      <script src="../assets/js/skel.min.js"></script>
+      <script src="../assets/js/util.js"></script>
+      <script src="../assets/js/main.js"></script>
 
 
 

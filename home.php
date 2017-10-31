@@ -175,37 +175,37 @@ body, html {
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
   <div class="w3-row-padding w3-center">
     <div class="w3-col m3">
-      <img src="/w3images/p1.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc1.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc2.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc3.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc4.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
   </div>
 
   <div class="w3-row-padding w3-center w3-section">
     <div class="w3-col m3">
-      <img src="/w3images/p5.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc5.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p6.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc6.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p7.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc7.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
 
     <div class="w3-col m3">
-      <img src="/w3images/p8.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
+      <img src="img/nitc8.jpg" style="width:100%; height: 130px;" onclick="onClick(this)" class="w3-hover-opacity" alt="NITC IMG">
     </div>
     <a href = "#home"><button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">TOP ^</button></a>
   </div>
@@ -232,7 +232,7 @@ body, html {
 
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
-  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <a href="php/admin.php" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Admin</a>
   <div class="w3-xlarge w3-section">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>

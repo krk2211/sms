@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html>
-<title>Attendance</title>
+<title>Grades</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/w3.css">
@@ -16,7 +16,12 @@ body, html {
     color: #777;
     line-height: 1.8;
 }
+#roll1{
+text-align: right;
+width: 300px;
 
+
+}
 /* Create a Parallax Effect */
 .bgimg-1, .bgimg-2, .bgimg-3 {
     background-attachment: fixed;
@@ -72,7 +77,7 @@ body, html {
   </div>
 
   <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+ <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
     <a href="../home.php" class="w3-bar-item w3-button" onclick="toggleFunction()">HOME</a>
     <a href="teacher.php" class="w3-bar-item w3-button" onclick="toggleFunction()">TEACHER</a>
     <a href="student.php" class="w3-bar-item w3-button" onclick="toggleFunction()">STUDENT</a>
@@ -86,52 +91,183 @@ body, html {
 
 <!-- Header -->
       <header id="header" class="alt">
-        <div class="inner" style="z-index:inherit">
+        <div class="inner">
           <h1>Teacher Portal</h1>
-          <p>A portal to Enter Grades</p>
+          <p>A portal to enter grades</p>
         </div>
       </header>
 
-    <!-- Wrapper -->
-      <div id="wrapper">
+	  <?php
+	$servername = "localhost";
+	$username = "root";
+	$password = "root";
+	$dbname = "sms";
 
-	  			<?php
+	// Create connection
+	$con = mysqli_connect($servername, $username, $password, $dbname);
+
+	// Check connection
+	if ($con->connect_error) 
+	{
+		die("Connection failed: " . $con->connect_error);
+	}
+
+	if(isset( $_GET['loggedin'] ))
+	{
+		echo '		<section id="intro" class="main">
+            <span class="icon fa-diamond major"></span>
+            <h2>
+				Add Grades
+			</h2>
+            <p>
 			
-			if(isset( $_GET['failedLogin'] ))
-			{
-				echo"failed";
-				echo '
-				<div class="w3-container">
-					<div class="w3-panel w3-card w3-red w3-display-container">
-						<span onclick="this.parentElement.style.display='."'none'".'"
-						class="w3-button w3-red w3-large w3-display-topright">&times;</span>
-						<h3 style="color:white">Login Failed</h3>
-						<p>Please try again. If error persists, contact admin.</p>
-						</div>
-				</div>';
-			}
-			
-			?>
-        <!-- Banner -->
+				Enter studentID, teacherID, leaves taken and courseID, grade
+		
+			</p>
+ 			<form action="teacherview.php?insert"  method = "post">
+ 				<p>Enter studentID&nbsp&nbsp<input type="number" name="studentID" id = "studentID"></p>
+ 				<p></p>
+				<p>Enter teacherID&nbsp&nbsp<input type="number" name="teacherID" id = "teacherID"></p>
+ 				<p></p>
+				<p>Enter CourseID&nbsp&nbsp<input type="number" name="courseID" id = "courseID"></p>
+ 				<p></p>
+ 				<p>Enter Grade&nbsp&nbsp<input type="text" name="grade" id = "grade"></p>
+ 				<p></p>
+				
+ 				<input type="submit" value="View Data" class="button big">
+			</form>
+		</section>';
+	}
+	else if(isset( $_GET['insert'] ))
+	{
+		$grade=$_POST['grade'];
+		//$get_stu="INSERT INTO student_has_course VALUES ($_POST[studentID], $_POST[teacherID], $_POST[courseID], $_POST[leavesTaken], 'NULL')";
+		$get_stu="UPDATE student_has_course SET grade = '$_POST[grade]' where studentID = $_POST[studentID] and teacherID=$_POST[teacherID] and courseID = $_POST[courseID]";
+		echo $get_stu;
+		$run_stu=mysqli_query($con,$get_stu);
+		if($run_stu)
+		{
+			echo '
+			<div class="w3-container">
+				<div class="w3-panel w3-card w3-green w3-display-container">
+					<span onclick="this.parentElement.style.display='."'none'".'"
+					class="w3-button w3-green w3-large w3-display-topright">&times;</span>
+					<h3 style="color:white">Success!</h3>
+					<p>Grade RECORD ADDED!</p>
+					</div>
+			</div>';
+		}
+		else
+		{
+			echo '
+			<div class="w3-container">
+				<div class="w3-panel w3-card w3-red w3-display-container">
+					<span onclick="this.parentElement.style.display='."'none'".'"
+					class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+					<h3 style="color:white">Insert failed</h3>
+					<p>Probable error: TeacherID not matching up with courseID</p>
+					</div>
+			</div>';
+		}
+		echo '		
 		<section id="intro" class="main">
             <span class="icon fa-diamond major"></span>
             <h2>
-				TEACHER PORTAL
+				Add Grade
 			</h2>
             <p>
-				This is a portal for teachers to add their students' grades.
+			
+				Enter studentID, teacherID, leaves taken and courseID, grade
 		
 			</p>
-
- 			<form action="teacherview.php"  method = "post"; >
- 				<p>Enter Username</p><input type="text" name="teacherUser" id = "teacherUser">
- 				<br>
- 				<p>Enter Password</p><input type="password" name="teacherPass" id = "teacherPass">
- 				<br>
+ 			<form action="teacherview.php?insert"  method = "post">
+ 				<p>Enter studentID&nbsp&nbsp<input type="number" name="studentID" id = "studentID"></p>
+ 				<p></p>
+				<p>Enter teacherID&nbsp&nbsp<input type="number" name="teacherID" id = "teacherID"></p>
+ 				<p></p>
+				<p>Enter CourseID&nbsp&nbsp<input type="number" name="courseID" id = "courseID"></p>
+ 				<p></p>
+ 				<p>Enter Grade&nbsp&nbsp<input type="text" name="grade" id = "grade"></p>
+ 				<p></p>
+				
  				<input type="submit" value="View Data" class="button big">
 			</form>
-		</section>
-		
+		</section>';
+	}
+
+	else
+	{	
+		$teacherUser=$_POST['teacherUser'];
+		$teacherPass=$_POST['teacherPass'];
+		$get_stu="select * from teacher where username = '$teacherUser' AND password = '$teacherPass'";
+		$run_stu=mysqli_query($con,$get_stu);
+		if(mysqli_num_rows($run_stu)>0)
+		{
+			echo "<script>window.location.href='teacherview.php?loggedin'</script>";
+			/*
+			header("Location: teacherview.php?loggedin");
+		{	
+			//header("Location: teacherview.php?loggedin");
+			header("Location: http://www.lifehacker.com");
+			echo "string";
+			die();
+			*/
+		}
+		else
+		{
+			echo "<script>window.location.href='teacher.php?failedlogin'</script>";
+			/*
+			header("Location: attendance.php?failedlogin");
+			die();
+			*/
+		}
+
+	}
+	/*
+	while($row_stu=mysqli_fetch_array($run_stu))
+	{
+	$course=$row_stu['courseID'];
+	$leaves = $row_stu['leavesTaken'];
+
+
+	$get_stu2="select * from course where courseID = ".$course.";";
+	$run_stu2=mysqli_query($con,$get_stu2);
+
+
+	while($row_stu=mysqli_fetch_array($run_stu2))
+	{
+	$courseid=$row_stu['courseID'];
+
+	$coursename=$row_stu['courseName'];
+	$possible=$row_stu['possibleLeaves'];
+	$left = $possible - $leaves;
+
+	echo "<div>
+
+	<p>Course ID          : $course</p>
+	<p>COURSE NAME        : $coursename</p>
+	<p>LEAVES REMAINING   : $left</p>
+
+	X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X<p></p>
+
+	</div>";
+	}
+	}
+
+	*/
+
+	$con->close();
+
+
+
+?>
+
+	  
+    <!-- Wrapper -->
+      <div id="wrapper">
+
+
+
         <!-- Footer -->
           <footer id="footer">
             <ul class="icons">
@@ -147,13 +283,12 @@ body, html {
       </div>
 
     <!-- Scripts -->
-      <script src="assets/js/jquery.min.js"></script>
-      <script src="assets/js/skel.min.js"></script>
-      <script src="assets/js/util.js"></script>
-      <script src="assets/js/main.js"></script>
+      <script src="../assets/js/jquery.min.js"></script>
+      <script src="../assets/js/skel.min.js"></script>
+      <script src="../assets/js/util.js"></script>
+      <script src="../assets/js/main.js"></script>
 
 
- 
  
 <!-- Add Google Maps -->
 <script>

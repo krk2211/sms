@@ -217,7 +217,7 @@ width: 300px;
 		}
 		else
 		{
-			echo "<script>window.location.href='attendanceview.php?failedlogin'</script>";
+			echo "<script>window.location.href='attendance.php?failedlogin'</script>";
 			/*
 			header("Location: attendance.php?failedlogin");
 			die();

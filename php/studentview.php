@@ -100,7 +100,7 @@ width: 300px;
     <!-- Wrapper -->
       <div id="wrapper">
 
-       
+      <section id="intro" class="main"> 
           
 
                   <?php
@@ -123,6 +123,9 @@ if ($conn->connect_error) {
 
 $get_stu="select * from student where studentID = ".$_POST['roll'].";";
 $run_stu=mysqli_query($con,$get_stu);
+
+
+
 while($row_stu=mysqli_fetch_array($run_stu))
 {
 $name=$row_stu['studentName'];
@@ -266,7 +269,7 @@ $conn->close();
 
 
       
-
+</section>
 
 
         <!-- Footer -->

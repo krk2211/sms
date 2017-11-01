@@ -141,7 +141,19 @@ width: 300px;
 	{
 		$leaves=$_POST['leavesTaken'];
 		//$get_stu="INSERT INTO student_has_course VALUES ($_POST[studentID], $_POST[teacherID], $_POST[courseID], $_POST[leavesTaken], 'NULL')";
-		$get_stu="UPDATE student_has_course SET leavesTaken = '$_POST[leavesTaken]' where studentID = $_POST[studentID] and teacherID=$_POST[teacherID] and courseID = $_POST[courseID]";
+
+
+		$get_stu="SELECT * from student where studentID = $_POST[studentID] and teacherID=$_POST[teacherID] and courseID = $_POST[courseID] ";
+		$run_stu=mysqli_query($conn,$get_stu);
+		while($row_stu=mysqli_fetch_array($run_stu))
+		{
+		$leave=$row_stu['leavesTaken'];
+		
+		}
+		$leaves = $leave + $_POST[leavesTaken];
+
+
+		$get_stu="UPDATE student_has_course SET leavesTaken = $leaves where studentID = $_POST[studentID] and teacherID=$_POST[teacherID] and courseID = $_POST[courseID]";
 		$run_stu=mysqli_query($con,$get_stu);
 		if($run_stu)
 		{

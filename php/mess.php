@@ -88,6 +88,29 @@ body, html {
 <!-- Wrapper -->
   <div id="wrapper">
 
+
+    <?php 
+
+    if(isset( $_GET['incorrect'] ))
+
+    {
+
+      echo '
+      <div class="w3-container">
+        <div class="w3-panel w3-card w3-red w3-display-container">
+          <span onclick="this.parentElement.style.display='."'none'".'"
+          class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+          <h3 style="color:white">Insert failed</h3>
+          <p>Probable error 1: Entry for this month already exists</p>
+          <p>Probable error 2: Duplicate Entry</p>
+          </div>
+      </div>';
+    }
+
+
+
+     ?>
+
     <!-- Banner -->
       <section id="intro" class="main">
         <span class="icon fa-diamond major"></span>
@@ -104,6 +127,8 @@ body, html {
     <br>
     <p>Enter Extra Amount</p><input type="text" name="extraamt" id = "extraamt11" >
     <br>
+
+
 
 
 

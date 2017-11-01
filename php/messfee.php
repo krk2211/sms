@@ -139,7 +139,13 @@ if($con->query($sql) === TRUE) {
   echo "Entered Successfully";
 }
 else
-echo "Error: " . $sql . "<br>" . $con->error;
+{
+  echo "<script>window.location.href='mess.php?incorrect'</script>";
+
+}
+
+
+
 
 
 

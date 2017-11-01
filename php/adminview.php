@@ -171,7 +171,8 @@ width: 300px;
 					<span onclick="this.parentElement.style.display='."'none'".'"
 					class="w3-button w3-red w3-large w3-display-topright">&times;</span>
 					<h3 style="color:white">Insert failed</h3>
-					<p>Probable error: TeacherID not matching up with courseID</p>
+					<p>Probable error 1: TeacherID not matching up with courseID.</p>
+					<p>Probable error 2: Student already enrolled in course.</p>
 					</div>
 			</div>';
 		}
@@ -213,7 +214,8 @@ width: 300px;
 					<span onclick="this.parentElement.style.display='."'none'".'"
 					class="w3-button w3-red w3-large w3-display-topright">&times;</span>
 					<h3 style="color:white">Insert failed</h3>
-					<p>Probable error: TeacherID not matching up with courseID</p>
+					<p>Probable error 1: TeacherID not matching up with courseID.</p>
+					<p>Probable error 2: Student already enrolled in course.</p>
 					</div>
 			</div>';
 

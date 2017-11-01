@@ -95,7 +95,7 @@ width: 300px;
         </div>
       </header>
 
-	  <?php
+  <?php
 	$servername = "localhost";
 	$username = "root";
 	$password = "root";
@@ -138,7 +138,18 @@ width: 300px;
 	else if(isset( $_GET['insert'] ))
 	{
 		
-		$get_stu="INSERT INTO student_has_course VALUES ($_POST[studentID], $_POST[teacherID], $_POST[courseID], 'NULL', 'NULL')" ;
+
+		$get_stu="Select * from course where teacherID = $_POST[teacherID] and courseID = $_POST[courseID];" ;
+		$run_stu=mysqli_query($con,$get_stu);
+		if(mysqli_num_rows($run_stu)<=0)
+		{
+			echo "<script>window.location.href='adminview.php?mismatch'</script>";
+
+		}
+
+		else
+		{
+		$get_stu="INSERT INTO student_has_course VALUES ($_POST[studentID], $_POST[teacherID], $_POST[courseID], 'NULL', 'NULL') " ;
 		$run_stu=mysqli_query($con,$get_stu);
 		if($run_stu)
 		{
@@ -187,6 +198,48 @@ width: 300px;
  				<input type="submit" value="View Data" class="button big">
 			</form>
 		</section>';
+
+	}
+	}
+
+
+	else if(isset( $_GET['mismatch'] ))
+	{
+
+
+		echo '
+			<div class="w3-container">
+				<div class="w3-panel w3-card w3-red w3-display-container">
+					<span onclick="this.parentElement.style.display='."'none'".'"
+					class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+					<h3 style="color:white">Insert failed</h3>
+					<p>Probable error: TeacherID not matching up with courseID</p>
+					</div>
+			</div>';
+
+		echo '		<section id="intro" class="main">
+            <span class="icon fa-diamond major"></span>
+            <h2>
+				Add Student
+			</h2>
+            <p>
+			
+				Enter studentID, teacherID, leaves taken and courseID, grade
+		
+			</p>
+ 			<form action="adminview.php?insert"  method = "post">
+ 				<p>Enter studentID&nbsp&nbsp<input type="number" name="studentID" id = "studentID"></p>
+ 				<p></p>
+				<p>Enter teacherID&nbsp&nbsp<input type="number" name="teacherID" id = "teacherID"></p>
+ 				<p></p>
+ 				
+				<p>Enter CourseID&nbsp&nbsp<input type="number" name="courseID" id = "courseID"></p>
+ 				<p></p>
+				
+ 				<input type="submit" value="View Data" class="button big">
+			</form>
+		</section>';
+
 	}
 
 	else
